@@ -2,6 +2,7 @@
 using Entities.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace API
 {
@@ -38,8 +39,8 @@ namespace API
         {
             return Ok(new
             {
-                UserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value,
-                Email = User.FindFirst(System.Security.Claims.ClaimTypes.Email)?.Value
+                UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                Email = User.FindFirst(ClaimTypes.Email)?.Value
             });
         }
 
